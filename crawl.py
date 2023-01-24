@@ -12,7 +12,6 @@ links = [i for i in links if i != '\n']
 newlinks = []
 for i in links:
     newlinks.append(i.strip().replace('\n', ''))
-    print(key)
 writeli=""
 with open(filename, 'w') as file_object:
     writeli += key + "\n"
