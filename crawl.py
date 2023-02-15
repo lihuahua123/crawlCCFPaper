@@ -16,8 +16,11 @@ writeli=""
 with open(filename, 'w') as file_object:
     writeli += key + "\n"
     for link in newlinks:
-        jouc = link.split('/')[-3]
-        aname = link.split('/')[-2]
+        link_s = link.split('/')
+        if len(link_s) < 4 or link_s[-4] != 'db':
+            continue
+        jouc = link_s[-3]
+        aname = link_s[-2]
         searchurl = 'https://dblp.uni-trier.de/search?q={que}%20streamid%3A{jorc}%2F{name}%3A'.format(que=key,jorc=jouc,name=aname)
         strhtml = requests.get(searchurl)
         soup=BeautifulSoup(strhtml.text,'html.parser')
